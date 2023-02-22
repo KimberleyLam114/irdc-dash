@@ -1793,482 +1793,482 @@ def update_bar_chart(slider_range):
 @app.callback(Output('tabs-content', 'children'),
               Input('tabs-title', 'value'))
 def render_content(tab):
-    if tab == '工时':
-        return dbc.Container([
-            html.P("人员维度Summary"),
-            dbc.Row([
-                dbc.Col([
-                    irdc_summary_large_ppl("staff_number_indicator", staff_number_indicator)
-                ]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider_ppl("staff_in_indicator", staff_in_indicator),
-                        irdc_summary_smWider_ppl("staff_out_indicator", staff_out_indicator),
-                        irdc_summary_smWider_ppl("staff_intern_indicator", staff_intern_indicator),
-                    ])]),
+    # if tab == '工时':
+    #     return dbc.Container([
+    #         html.P("人员维度Summary"),
+    #         dbc.Row([
+    #             dbc.Col([
+    #                 irdc_summary_large_ppl("staff_number_indicator", staff_number_indicator)
+    #             ]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider_ppl("staff_in_indicator", staff_in_indicator),
+    #                     irdc_summary_smWider_ppl("staff_out_indicator", staff_out_indicator),
+    #                     irdc_summary_smWider_ppl("staff_intern_indicator", staff_intern_indicator),
+    #                 ])]),
+    #
+    #             dbc.Col([
+    #                 irdc_summary_large_ppl("logic_percentage", logic_percentage)
+    #             ]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider_ppl("logic_in_percentage", logic_in_percentage),
+    #                     irdc_summary_smWider_ppl("logic_out_percentage", logic_out_percentage),
+    #                     irdc_summary_smWider_ppl("logic_intern_percentage", logic_intern_percentage),
+    #                 ])]),
+    #
+    #             dbc.Col([
+    #                 irdc_summary_large_ppl("act_allday", act_allday)
+    #             ]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider_ppl("act_in_day", act_in_day),
+    #                     irdc_summary_smWider_ppl("act_out_day", act_out_day),
+    #                     irdc_summary_smWider_ppl("act_intern_day", act_intern_day),
+    #                 ])]),
+    #
+    #             dbc.Col([
+    #                 irdc_summary_large_ppl("act_perday", act_perday)
+    #             ]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider_ppl("act_in_perday", act_in_perday),
+    #                     irdc_summary_smWider_ppl("act_out_perday", act_out_perday),
+    #                     irdc_summary_smWider_ppl("act_intern_perday", act_intern_perday),
+    #             ])]),
+    #             dbc.Col([
+    #                 irdc_summary_large_ppl("attend_allday", attend_allday)
+    #             ]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider_ppl("attend_in_day", attend_in_day),
+    #                     irdc_summary_smWider_ppl("attend_out_day", attend_out_day),
+    #                     irdc_summary_smWider_ppl("attend_intern_day", attend_intern_day),
+    #                 ])]),
+    #         ]),
+    #         html.Br(),
+    #         html.Div(
+    #         dbc.Accordion(
+    #             [
+    #                 dbc.AccordionItem([
+    #
+    #                     dbc.Row([
+    #                         dbc.Col([
+    #                             irdc_graph('员工所属部门汇总-summary', fig员工所属部门汇总())
+    #                         ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                         dbc.Col([
+    #                             irdc_graph('员工所属部门汇总-bar', fig员工所属部门人均人天())
+    #                         ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                         dbc.Col([
+    #                             html.Div([
+    #                                 html.Div([
+    #                                     dcc.RadioItems(
+    #                                         id='radio_actual_per',
+    #                                         options=[
+    #                                             {'label': 'IRDC', 'value': 'graph_actual_per_irdc'},
+    #                                             {'label': '业务线', 'value': 'graph_actual_per_all'},
+    #                                         ],
+    #                                         value='graph_actual_per_irdc',
+    #                                         style={"width": "60%"},
+    #                                         inline=True),
+    #                                 ]),
+    #                                 html.Div(
+    #                                     dcc.Graph(id='graph_actual_per',
+    #                                               style={'height': 500,
+    #                                                      "border-radius": "5px",
+    #                                                      "background-color": "#f9f9f9",
+    #                                                      "box-shadow": "2px 2px 2px lightgrey",
+    #                                                      "position": "relative",
+    #                                                      "margin-bottom": "15px"
+    #                                                      },
+    #                                               config = {'displayModeBar': False},
+    #                                               ),
+    #                                 ),
+    #
+    #                             ])
+    #
+    #                         ]),
+    #                         # dbc.Col([
+    #                         #     irdc_graph('历史部门实际人均人天-line2', fig历史实际人均人天())
+    #                         # ]),
+    #                         dbc.Col([
+    #                             html.Div([
+    #                                 html.Div([
+    #                                     dcc.RadioItems(
+    #                                         id='radio_logic_rate',
+    #                                         options=[
+    #                                             {'label': 'IRDC', 'value': 'graph_logic_rate_irdc'},
+    #                                             {'label': '业务线', 'value': 'graph_logic_rate_all'},
+    #                                         ],
+    #                                         value='graph_logic_rate_irdc',
+    #                                         style={"width": "60%"},
+    #                                         inline=True),
+    #                                 ]),
+    #                                 html.Div(
+    #                                     dcc.Graph(id='graph_logic_rate',
+    #                                               style={'height': 500,
+    #                                                      "border-radius": "5px",
+    #                                                      "background-color": "#f9f9f9",
+    #                                                      "box-shadow": "2px 2px 2px lightgrey",
+    #                                                      "position": "relative",
+    #                                                      "margin-bottom": "15px"
+    #                                                      },
+    #                                               config={'displayModeBar': False},
+    #                                               ),
+    #                                 ),
+    #
+    #                             ])
+    #
+    #                         ]),
+    #                         # dbc.Col([
+    #                         #     irdc_graph('历史部门理论填报率-line', fig历史理论填报率())
+    #                         # ]),
+    #                     ]),
+    #                     dbc.Row([
+    #                         collapse_btn_table("collapse-button", "staff_apartment_tb", staff_apartment_tb,'collapse'),
+    #                         html.Br(),
+    #                     ]),
+    #                     html.Br(),
+    #                     dbc.Row([
+    #                         irdc_graph('业务线汇总-pie', fig业务线pie()),
+    #                     ]),
+    #                     html.Br(),
+    #                     dbc.Row([
+    #                         irdc_graph('员工组汇总-bar', fig员工部门员工组()),
+    #                     ]),
+    #                     dbc.Row([
+    #                         collapse_btn_table("collapse-button4", "business_line_staff_type_detailed", business_line_staff_type,'collapse4'),
+    #                         html.Br(),
+    #                     ]),
+    #                     html.Br(),
+    #                     dbc.Row([
+    #                         irdc_graph('岗位汇总-pie', fig岗位pie()),
+    #                     ]),
+    #                     dbc.Row([
+    #                         dbc.Col([
+    #                             irdc_graph('理论填报分布-pie', fig理论填报分布())
+    #                         ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                         dbc.Col([
+    #                             dbc.Row([
+    #                                 html.P('本月工时填报异常人数：' + str(
+    #                                     len(logic_rate_abnormal_tb())),
+    #                                        style={"fontSize": 25}),
+    #                             ]),
+    #                             dash_table_not_collapse("logic_distribution_tb_id", logic_rate_abnormal_tb()),
+    #
+    #                         ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #
+    #                     ]),
+    #                     dbc.Row([
+    #                         dbc.Col([
+    #                             irdc_graph('未填工时分布-pie', fig未填工时分布())
+    #                         ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                         dbc.Col([
+    #                             dbc.Row([
+    #                                 html.P('本月未填工时人数：' + str(
+    #                                     len(readData(本月未填工时名单()))) +'  (连续两月未填已标红)',
+    #                                        style={"fontSize": 25}),
+    #                             ]),
+    #                             dash_table_not_collapse("no_actual_list_tb_id", not_fill_workHour_twice()),
+    #
+    #                         ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #
+    #                     ]),
+    #                     dbc.Row([
+    #                         collapse_btn_table("collapse-button3", "cur_mon_staff_detailed", cur_mon_staff,
+    #                                            'collapse3'),
+    #                         html.Br(),
+    #                     ]),
+    #                     # dbc.Row([
+    #                     #     dcc.Graph(id="staff_3d_graph",config={'displayModeBar': False},
+    #                     #               style={"border-radius": "5px",
+    #                     #                      "background-color": "#f9f9f9",
+    #                     #                      "box-shadow": "2px 2px 2px lightgrey",
+    #                     #                      "position": "relative",
+    #                     #                      "margin-bottom": "15px",
+    #                     #                      "height":'800px'
+    #                     #                      }
+    #                     # ),
+    #                     #     html.P("理论填报率:"),
+    #                     #     dcc.RangeSlider(
+    #                     #         id='range-slider',
+    #                     #         min=min(cur_mon_staff['理论填报率']), max=max(cur_mon_staff['理论填报率']), step=5,
+    #                     #         marks={min(cur_mon_staff['理论填报率']): min(cur_mon_staff['理论填报率']), max(cur_mon_staff['理论填报率']): max(cur_mon_staff['理论填报率'])},
+    #                     #         value = [0, 120]
+    #                     #     ),
+    #                     # ]),
+    #                     # html.Br(),
+    #
+    #                     # dbc.Row([
+    #                     #     dbc.Col([
+    #                     #         irdc_graph('fig全量实际vs理论人天-scatter', fig全量实际vs理论人天),
+    #                     #         html.P("理论填报率:"),
+    #                     #         dcc.RangeSlider(
+    #                     #             id='range-slider实际vs理论',
+    #                     #             min=cur_mon_staff.理论填报率.min(), max=cur_mon_staff.理论填报率.max(), step=1,
+    #                     #             marks={
+    #                     #                 cur_mon_staff.理论填报率.min(): {'label': str(cur_mon_staff.理论填报率.min()),
+    #                     #                                                  'style': {'color': 'orange'}},
+    #                     #                 90: {'label': '90%', 'style': {'color': 'green'}},
+    #                     #                 120: {'label': '120%', 'style': {'color': 'green'}},
+    #                     #                 cur_mon_staff.理论填报率.max(): {'label': str(cur_mon_staff.理论填报率.max()),
+    #                     #                                                  'style': {'color': 'red'}}},
+    #                     #             value=[cur_mon_staff.理论填报率.min(), cur_mon_staff.理论填报率.max()], allowCross=False,
+    #                     #             tooltip={"placement": "bottom", "always_visible": True}
+    #                     #         ),
+    #                     #     ], xs=12, sm=12, md=6, lg=6, xl=6)
+    #                     # ]),
+    #
+    #             ],
+    #                     title = '人员维度详细',
+    #                 )
+    #             ],
+    #             flush=True,start_collapsed=True, id="accordtion-staff"
+    #         ),
+    #     ),
+    #
+    #         html.Br(),
+    #         html.P("WBS维度Summary"),
+    #         dbc.Row([
+    #             dbc.Col([
+    #                 irdc_summary_large("wbs_all_number", wbs_all_number)
+    #             ]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider("wbs_d_numebr", wbs_d_numebr),
+    #                     irdc_summary_smWider("wbs_p_numebr", wbs_p_numebr),
+    #                     irdc_summary_smWider("wbs_r_numebr", wbs_r_numebr),
+    #                     irdc_summary_smWider("wbs_m_numebr", wbs_m_numebr),
+    #                 ])]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider("scg_number", scg_number),
+    #                     irdc_summary_smWider("abg_number", abg_number),
+    #                     irdc_summary_smWider("ibg_number", ibg_number),
+    #                     irdc_summary_smWider("others_numebr", others_numebr),
+    #                 ])]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider("sx_number", sx_number),
+    #                     irdc_summary_smWider("ir_number", ir_number),
+    #                     irdc_summary_smWider("aiot_number", aiot_number),
+    #                     irdc_summary_smWider("chuangfu_number", chuangfu_number),
+    #                 ])]),
+    #             dbc.Col([
+    #                 irdc_summary_large("wbs_actual_hrs", wbs_actual_hrs)
+    #             ]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider("wbs_d_act", wbs_d_act),
+    #                     irdc_summary_smWider("wbs_p_act", wbs_p_act),
+    #                     irdc_summary_smWider("wbs_r_act", wbs_r_act),
+    #                     irdc_summary_smWider("wbs_m_act", wbs_m_act),
+    #                 ])]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider("wbs_d_act_percentage", wbs_d_act_percentage),
+    #                     irdc_summary_smWider("wbs_p_act_percentage", wbs_p_act_percentage),
+    #                     irdc_summary_smWider("wbs_r_act_percentage", wbs_r_act_percentage),
+    #                     irdc_summary_smWider("wbs_m_act_percentage", wbs_m_act_percentage),
+    #                 ])]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider("scg_act", scg_act),
+    #                     irdc_summary_smWider("abg_act", abg_act),
+    #                     irdc_summary_smWider("ibg_act", ibg_act),
+    #                     irdc_summary_smWider("z_act", z_act),
+    #                 ])]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider("sx_act", sx_act),
+    #                     irdc_summary_smWider("ir_act", ir_act),
+    #                     irdc_summary_smWider("aiot_act", aiot_act),
+    #                     irdc_summary_smWider("chuangfu_act", chuangfu_act),
+    #                 ])]),
+    #             dbc.Col([
+    #                 dbc.Row([
+    #                     irdc_summary_smWider("wbs_sx_percentage", wbs_sx_percentage),
+    #                     irdc_summary_smWider("wbs_ir_percentage", wbs_ir_percentage),
+    #                     irdc_summary_smWider("wbs_aiot_percentage", wbs_aiot_percentage),
+    #                     irdc_summary_smWider("wbs_chuangfu_percentage", wbs_chuangfu_percentage),
+    #                 ])]),
+    #         ]),
+    #         html.Div(
+    #             dbc.Accordion(
+    #                 [
+    #                     dbc.AccordionItem([
+    #                         dbc.Row([
+    #                             dbc.Col([
+    #                                 irdc_graph('WBS部门Top5-bar', figWBS部门Top5())
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                             dbc.Col([
+    #                                 irdc_graph('WBS部门Top5-pie', figWBStop5填报分布())
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                         ]),
+    #                         dbc.Col([
+    #                             dash_table_not_collapse("WBS部门Top5_id",
+    #                                                     wbs_top5_actual()),
+    #                         ]),
+    #                         html.Br(),
+    #                         dbc.Row([
+    #                             dbc.Col([
+    #                                 irdc_graph('历史WBS类型-line', fig历史WBS类型())
+    #                             ]),
+    #                         ]),
+    #                         dbc.Row([
+    #                             irdc_graph('WBS汇总类型-pie', figWBS类型pie()),
+    #                         ]),
+    #                         dbc.Row([
+    #                             irdc_graph('WBS汇总部门-pie', figWBS部门pie()),
+    #                         ]),
+    #
+    #                         dbc.Row([
+    #                             dbc.Col([
+    #                                 irdc_graph('wbs预估填报分布-pie', figWBS预估填报分布())
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                             dbc.Col([
+    #                                 dbc.Row([
+    #                                     irdc_graph('WBS预估填报异常部门-pie', figWBS预估填报异常部门分布())
+    #                                 ]),
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                         ]),
+    #                         dbc.Row([
+    #                             html.P('WBS填报异常个数: ' + str(len(logic_rate_abnormal_tb_WBS())),
+    #                                    style={"fontSize": 25}),
+    #                         ]),
+    #                         dbc.Row([
+    #                             dbc.Col([
+    #                                 dash_table_not_collapse("logic_distribution_tb_WBS_id",
+    #                                                         logic_rate_abnormal_tb_WBS()),
+    #                             ]),
+    #                         ]),
+    #
+    #
+    #                         dbc.Row([
+    #                             collapse_btn_table2("collapse-button6", "wbs总表_table",
+    #                                                 readData(本月WBS维度()).sort_values(by='实际人天', ascending=False),
+    #                                                 'collapse6', '实际人天'),
+    #                         ]),
+    #                         dbc.Row([
+    #                             dbc.Col([
+    #                                 dbc.Row([
+    #                                     html.P('预估并未实际填写WBS个数：' + str(len(est_no_act_df())),
+    #                                            style={"fontSize": 25}),
+    #                                 ]),
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                             dbc.Col([
+    #                                 dbc.Row([
+    #                                     html.P('实际填写并未预估WBS个数：' + str(len(act_no_est_df())),
+    #                                            style={"fontSize": 25}),
+    #                                 ]),
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                         ]),
+    #                         dbc.Row([
+    #                             dbc.Col([
+    #                                 irdc_graph('WBS预估未填报-pie', figWBS预估无实际分布())
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                             dbc.Col([
+    #                                 irdc_graph('WBS实际未填报-pie', figWBS实际未预估填报分布())
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                         ]),
+    #                         dbc.Row([
+    #                             dbc.Col([
+    #                                 dbc.Row([
+    #                                     collapse_btn_table("collapse-button7", "WBS预估未填报-table", est_no_act_df()[['项目编号', '项目名称', 'PM姓名', '实际人天','预估人天']],
+    #                                                        'collapse7'),
+    #                                     html.Br(),
+    #                                 ]),
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                             dbc.Col([
+    #                                 dbc.Row([
+    #                                     collapse_btn_table("collapse-button8", "WBS实际未填报-table", act_no_est_df()[['项目编号', '项目名称', 'PM姓名', '实际人天','预估人天']],
+    #                                                        'collapse8'),
+    #                                     html.Br(),
+    #                                 ]),
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                         ]),
+    #                         html.Br(),
+    #                         dbc.Row([
+    #                             dbc.Col([
+    #                                 irdc_graph('连续两月预估无实际填写WBS-pie', figWBS连续预估2月未填写分布())
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                             dbc.Col([
+    #                                 dbc.Row([
+    #                                     html.P('连续两月预估无实际填写WBS个数：' + str(
+    #                                         len(est_twice_wbs())),
+    #                                            style={"fontSize": 25}),
+    #                                 ]),
+    #                                 dbc.Row([
+    #                                     dbc.Col([
+    #                                         dash_table_not_collapse('连续两月预估无实际填写WBS-table',est_twice_wbs()[['项目编号','项目名称','PM姓名','上月预估','本月预估']])
+    #                                     ]),
+    #                                 ]),
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                         ]),
+    #                         dbc.Row([
+    #                             dbc.Col([
+    #                                 irdc_graph('超过1年WBS-pie', figWBS超过1年分布())
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                             dbc.Col([
+    #                                 dbc.Row([
+    #                                     html.P('建立超过1年WBS个数：' + str(
+    #                                         len(get_more_than1yr_wbs())),
+    #                                            style={"fontSize": 25}),
+    #                                 ]),
+    #                                 dbc.Row([
+    #                                     dbc.Col([
+    #                                         dash_table_not_collapse('超过1年WBS-table', get_more_than1yr_wbs())
+    #                                     ]),
+    #                                 ]),
+    #                             ], xs=12, sm=12, md=6, lg=6, xl=6),
+    #                         ]),
+    #
+    #                         dbc.Row([
+    #                             html.P('较上月新增WBS个数：' + str(
+    #                                 len(新增wbs(readData(本月WBS维度()), readData(上月WBS维度())))) , style={"fontSize":25}),
+    #                         ]),
+    #                         dbc.Row([
+    #                             dbc.Col([
+    #                                 dash_table_not_collapse('wbs新增table',
+    #                                                         新增wbs_tb(readData(本月WBS维度()), readData(上月WBS维度()),
+    #                                                                    "项目编号", "实际人天")),
+    #                             ]),
+    #                         ]),
+    #                         html.Br(),
+    #                         dbc.Row([
+    #                             html.P('较上月减少WBS个数：' + str(
+    #                                 len(减少wbs(readData(本月WBS维度()), readData(上月WBS维度())))) , style={"fontSize":25}),
+    #                         ]),
+    #                         dbc.Row([
+    #                             dbc.Col([
+    #                                 dash_table_not_collapse('wbs减少table',
+    #                                                         新增wbs_tb(readData(上月WBS维度()), readData(本月WBS维度()),
+    #                                                                    "项目编号", "实际人天")),
+    #                             ]),
+    #                         ]),
+    #                     ],
+    #                         title='WBS维度详细'
+    #                     )
+    #                 ],
+    #                 flush=True, start_collapsed=True,
+    #             ),
+    #         ),
+    #
+    #         # dbc.Row([
+    #         #     dbc.Col([
+    #         #         dcc.Dropdown(list(员工所属部门汇总1[部门']), list(员工所属部门汇总1['员工所属部门']),
+    #         #                      multi=True,
+    #         #                      placeholder="请选择员工所属部门"),
+    #         #         html.Br(),
+    #         #
+    #         #         dcc.RangeSlider(0, 30, value=[10, 15], tooltip={"placement": "bottom", "always_visible": True},
+    #         #                         allowCross=False)
+    #         #     ])
+    #         # ])
+    #
+    #     ], fluid=True)
 
-                dbc.Col([
-                    irdc_summary_large_ppl("logic_percentage", logic_percentage)
-                ]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider_ppl("logic_in_percentage", logic_in_percentage),
-                        irdc_summary_smWider_ppl("logic_out_percentage", logic_out_percentage),
-                        irdc_summary_smWider_ppl("logic_intern_percentage", logic_intern_percentage),
-                    ])]),
-
-                dbc.Col([
-                    irdc_summary_large_ppl("act_allday", act_allday)
-                ]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider_ppl("act_in_day", act_in_day),
-                        irdc_summary_smWider_ppl("act_out_day", act_out_day),
-                        irdc_summary_smWider_ppl("act_intern_day", act_intern_day),
-                    ])]),
-
-                dbc.Col([
-                    irdc_summary_large_ppl("act_perday", act_perday)
-                ]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider_ppl("act_in_perday", act_in_perday),
-                        irdc_summary_smWider_ppl("act_out_perday", act_out_perday),
-                        irdc_summary_smWider_ppl("act_intern_perday", act_intern_perday),
-                ])]),
-                dbc.Col([
-                    irdc_summary_large_ppl("attend_allday", attend_allday)
-                ]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider_ppl("attend_in_day", attend_in_day),
-                        irdc_summary_smWider_ppl("attend_out_day", attend_out_day),
-                        irdc_summary_smWider_ppl("attend_intern_day", attend_intern_day),
-                    ])]),
-            ]),
-            html.Br(),
-            html.Div(
-            dbc.Accordion(
-                [
-                    dbc.AccordionItem([
-
-                        dbc.Row([
-                            dbc.Col([
-                                irdc_graph('员工所属部门汇总-summary', fig员工所属部门汇总())
-                            ], xs=12, sm=12, md=6, lg=6, xl=6),
-                            dbc.Col([
-                                irdc_graph('员工所属部门汇总-bar', fig员工所属部门人均人天())
-                            ], xs=12, sm=12, md=6, lg=6, xl=6),
-                            dbc.Col([
-                                html.Div([
-                                    html.Div([
-                                        dcc.RadioItems(
-                                            id='radio_actual_per',
-                                            options=[
-                                                {'label': 'IRDC', 'value': 'graph_actual_per_irdc'},
-                                                {'label': '业务线', 'value': 'graph_actual_per_all'},
-                                            ],
-                                            value='graph_actual_per_irdc',
-                                            style={"width": "60%"},
-                                            inline=True),
-                                    ]),
-                                    html.Div(
-                                        dcc.Graph(id='graph_actual_per',
-                                                  style={'height': 500,
-                                                         "border-radius": "5px",
-                                                         "background-color": "#f9f9f9",
-                                                         "box-shadow": "2px 2px 2px lightgrey",
-                                                         "position": "relative",
-                                                         "margin-bottom": "15px"
-                                                         },
-                                                  config = {'displayModeBar': False},
-                                                  ),
-                                    ),
-
-                                ])
-
-                            ]),
-                            # dbc.Col([
-                            #     irdc_graph('历史部门实际人均人天-line2', fig历史实际人均人天())
-                            # ]),
-                            dbc.Col([
-                                html.Div([
-                                    html.Div([
-                                        dcc.RadioItems(
-                                            id='radio_logic_rate',
-                                            options=[
-                                                {'label': 'IRDC', 'value': 'graph_logic_rate_irdc'},
-                                                {'label': '业务线', 'value': 'graph_logic_rate_all'},
-                                            ],
-                                            value='graph_logic_rate_irdc',
-                                            style={"width": "60%"},
-                                            inline=True),
-                                    ]),
-                                    html.Div(
-                                        dcc.Graph(id='graph_logic_rate',
-                                                  style={'height': 500,
-                                                         "border-radius": "5px",
-                                                         "background-color": "#f9f9f9",
-                                                         "box-shadow": "2px 2px 2px lightgrey",
-                                                         "position": "relative",
-                                                         "margin-bottom": "15px"
-                                                         },
-                                                  config={'displayModeBar': False},
-                                                  ),
-                                    ),
-
-                                ])
-
-                            ]),
-                            # dbc.Col([
-                            #     irdc_graph('历史部门理论填报率-line', fig历史理论填报率())
-                            # ]),
-                        ]),
-                        dbc.Row([
-                            collapse_btn_table("collapse-button", "staff_apartment_tb", staff_apartment_tb,'collapse'),
-                            html.Br(),
-                        ]),
-                        html.Br(),
-                        dbc.Row([
-                            irdc_graph('业务线汇总-pie', fig业务线pie()),
-                        ]),
-                        html.Br(),
-                        dbc.Row([
-                            irdc_graph('员工组汇总-bar', fig员工部门员工组()),
-                        ]),
-                        dbc.Row([
-                            collapse_btn_table("collapse-button4", "business_line_staff_type_detailed", business_line_staff_type,'collapse4'),
-                            html.Br(),
-                        ]),
-                        html.Br(),
-                        dbc.Row([
-                            irdc_graph('岗位汇总-pie', fig岗位pie()),
-                        ]),
-                        dbc.Row([
-                            dbc.Col([
-                                irdc_graph('理论填报分布-pie', fig理论填报分布())
-                            ], xs=12, sm=12, md=6, lg=6, xl=6),
-                            dbc.Col([
-                                dbc.Row([
-                                    html.P('本月工时填报异常人数：' + str(
-                                        len(logic_rate_abnormal_tb())),
-                                           style={"fontSize": 25}),
-                                ]),
-                                dash_table_not_collapse("logic_distribution_tb_id", logic_rate_abnormal_tb()),
-
-                            ], xs=12, sm=12, md=6, lg=6, xl=6),
-
-                        ]),
-                        dbc.Row([
-                            dbc.Col([
-                                irdc_graph('未填工时分布-pie', fig未填工时分布())
-                            ], xs=12, sm=12, md=6, lg=6, xl=6),
-                            dbc.Col([
-                                dbc.Row([
-                                    html.P('本月未填工时人数：' + str(
-                                        len(readData(本月未填工时名单()))) +'  (连续两月未填已标红)',
-                                           style={"fontSize": 25}),
-                                ]),
-                                dash_table_not_collapse("no_actual_list_tb_id", not_fill_workHour_twice()),
-
-                            ], xs=12, sm=12, md=6, lg=6, xl=6),
-
-                        ]),
-                        dbc.Row([
-                            collapse_btn_table("collapse-button3", "cur_mon_staff_detailed", cur_mon_staff,
-                                               'collapse3'),
-                            html.Br(),
-                        ]),
-                        # dbc.Row([
-                        #     dcc.Graph(id="staff_3d_graph",config={'displayModeBar': False},
-                        #               style={"border-radius": "5px",
-                        #                      "background-color": "#f9f9f9",
-                        #                      "box-shadow": "2px 2px 2px lightgrey",
-                        #                      "position": "relative",
-                        #                      "margin-bottom": "15px",
-                        #                      "height":'800px'
-                        #                      }
-                        # ),
-                        #     html.P("理论填报率:"),
-                        #     dcc.RangeSlider(
-                        #         id='range-slider',
-                        #         min=min(cur_mon_staff['理论填报率']), max=max(cur_mon_staff['理论填报率']), step=5,
-                        #         marks={min(cur_mon_staff['理论填报率']): min(cur_mon_staff['理论填报率']), max(cur_mon_staff['理论填报率']): max(cur_mon_staff['理论填报率'])},
-                        #         value = [0, 120]
-                        #     ),
-                        # ]),
-                        # html.Br(),
-
-                        # dbc.Row([
-                        #     dbc.Col([
-                        #         irdc_graph('fig全量实际vs理论人天-scatter', fig全量实际vs理论人天),
-                        #         html.P("理论填报率:"),
-                        #         dcc.RangeSlider(
-                        #             id='range-slider实际vs理论',
-                        #             min=cur_mon_staff.理论填报率.min(), max=cur_mon_staff.理论填报率.max(), step=1,
-                        #             marks={
-                        #                 cur_mon_staff.理论填报率.min(): {'label': str(cur_mon_staff.理论填报率.min()),
-                        #                                                  'style': {'color': 'orange'}},
-                        #                 90: {'label': '90%', 'style': {'color': 'green'}},
-                        #                 120: {'label': '120%', 'style': {'color': 'green'}},
-                        #                 cur_mon_staff.理论填报率.max(): {'label': str(cur_mon_staff.理论填报率.max()),
-                        #                                                  'style': {'color': 'red'}}},
-                        #             value=[cur_mon_staff.理论填报率.min(), cur_mon_staff.理论填报率.max()], allowCross=False,
-                        #             tooltip={"placement": "bottom", "always_visible": True}
-                        #         ),
-                        #     ], xs=12, sm=12, md=6, lg=6, xl=6)
-                        # ]),
-
-                ],
-                        title = '人员维度详细',
-                    )
-                ],
-                flush=True,start_collapsed=True, id="accordtion-staff"
-            ),
-        ),
-
-            html.Br(),
-            html.P("WBS维度Summary"),
-            dbc.Row([
-                dbc.Col([
-                    irdc_summary_large("wbs_all_number", wbs_all_number)
-                ]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider("wbs_d_numebr", wbs_d_numebr),
-                        irdc_summary_smWider("wbs_p_numebr", wbs_p_numebr),
-                        irdc_summary_smWider("wbs_r_numebr", wbs_r_numebr),
-                        irdc_summary_smWider("wbs_m_numebr", wbs_m_numebr),
-                    ])]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider("scg_number", scg_number),
-                        irdc_summary_smWider("abg_number", abg_number),
-                        irdc_summary_smWider("ibg_number", ibg_number),
-                        irdc_summary_smWider("others_numebr", others_numebr),
-                    ])]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider("sx_number", sx_number),
-                        irdc_summary_smWider("ir_number", ir_number),
-                        irdc_summary_smWider("aiot_number", aiot_number),
-                        irdc_summary_smWider("chuangfu_number", chuangfu_number),
-                    ])]),
-                dbc.Col([
-                    irdc_summary_large("wbs_actual_hrs", wbs_actual_hrs)
-                ]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider("wbs_d_act", wbs_d_act),
-                        irdc_summary_smWider("wbs_p_act", wbs_p_act),
-                        irdc_summary_smWider("wbs_r_act", wbs_r_act),
-                        irdc_summary_smWider("wbs_m_act", wbs_m_act),
-                    ])]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider("wbs_d_act_percentage", wbs_d_act_percentage),
-                        irdc_summary_smWider("wbs_p_act_percentage", wbs_p_act_percentage),
-                        irdc_summary_smWider("wbs_r_act_percentage", wbs_r_act_percentage),
-                        irdc_summary_smWider("wbs_m_act_percentage", wbs_m_act_percentage),
-                    ])]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider("scg_act", scg_act),
-                        irdc_summary_smWider("abg_act", abg_act),
-                        irdc_summary_smWider("ibg_act", ibg_act),
-                        irdc_summary_smWider("z_act", z_act),
-                    ])]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider("sx_act", sx_act),
-                        irdc_summary_smWider("ir_act", ir_act),
-                        irdc_summary_smWider("aiot_act", aiot_act),
-                        irdc_summary_smWider("chuangfu_act", chuangfu_act),
-                    ])]),
-                dbc.Col([
-                    dbc.Row([
-                        irdc_summary_smWider("wbs_sx_percentage", wbs_sx_percentage),
-                        irdc_summary_smWider("wbs_ir_percentage", wbs_ir_percentage),
-                        irdc_summary_smWider("wbs_aiot_percentage", wbs_aiot_percentage),
-                        irdc_summary_smWider("wbs_chuangfu_percentage", wbs_chuangfu_percentage),
-                    ])]),
-            ]),
-            html.Div(
-                dbc.Accordion(
-                    [
-                        dbc.AccordionItem([
-                            dbc.Row([
-                                dbc.Col([
-                                    irdc_graph('WBS部门Top5-bar', figWBS部门Top5())
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                                dbc.Col([
-                                    irdc_graph('WBS部门Top5-pie', figWBStop5填报分布())
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                            ]),
-                            dbc.Col([
-                                dash_table_not_collapse("WBS部门Top5_id",
-                                                        wbs_top5_actual()),
-                            ]),
-                            html.Br(),
-                            dbc.Row([
-                                dbc.Col([
-                                    irdc_graph('历史WBS类型-line', fig历史WBS类型())
-                                ]),
-                            ]),
-                            dbc.Row([
-                                irdc_graph('WBS汇总类型-pie', figWBS类型pie()),
-                            ]),
-                            dbc.Row([
-                                irdc_graph('WBS汇总部门-pie', figWBS部门pie()),
-                            ]),
-
-                            dbc.Row([
-                                dbc.Col([
-                                    irdc_graph('wbs预估填报分布-pie', figWBS预估填报分布())
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                                dbc.Col([
-                                    dbc.Row([
-                                        irdc_graph('WBS预估填报异常部门-pie', figWBS预估填报异常部门分布())
-                                    ]),
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                            ]),
-                            dbc.Row([
-                                html.P('WBS填报异常个数: ' + str(len(logic_rate_abnormal_tb_WBS())),
-                                       style={"fontSize": 25}),
-                            ]),
-                            dbc.Row([
-                                dbc.Col([
-                                    dash_table_not_collapse("logic_distribution_tb_WBS_id",
-                                                            logic_rate_abnormal_tb_WBS()),
-                                ]),
-                            ]),
-
-
-                            dbc.Row([
-                                collapse_btn_table2("collapse-button6", "wbs总表_table",
-                                                    readData(本月WBS维度()).sort_values(by='实际人天', ascending=False),
-                                                    'collapse6', '实际人天'),
-                            ]),
-                            dbc.Row([
-                                dbc.Col([
-                                    dbc.Row([
-                                        html.P('预估并未实际填写WBS个数：' + str(len(est_no_act_df())),
-                                               style={"fontSize": 25}),
-                                    ]),
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                                dbc.Col([
-                                    dbc.Row([
-                                        html.P('实际填写并未预估WBS个数：' + str(len(act_no_est_df())),
-                                               style={"fontSize": 25}),
-                                    ]),
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                            ]),
-                            dbc.Row([
-                                dbc.Col([
-                                    irdc_graph('WBS预估未填报-pie', figWBS预估无实际分布())
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                                dbc.Col([
-                                    irdc_graph('WBS实际未填报-pie', figWBS实际未预估填报分布())
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                            ]),
-                            dbc.Row([
-                                dbc.Col([
-                                    dbc.Row([
-                                        collapse_btn_table("collapse-button7", "WBS预估未填报-table", est_no_act_df()[['项目编号', '项目名称', 'PM姓名', '实际人天','预估人天']],
-                                                           'collapse7'),
-                                        html.Br(),
-                                    ]),
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                                dbc.Col([
-                                    dbc.Row([
-                                        collapse_btn_table("collapse-button8", "WBS实际未填报-table", act_no_est_df()[['项目编号', '项目名称', 'PM姓名', '实际人天','预估人天']],
-                                                           'collapse8'),
-                                        html.Br(),
-                                    ]),
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                            ]),
-                            html.Br(),
-                            dbc.Row([
-                                dbc.Col([
-                                    irdc_graph('连续两月预估无实际填写WBS-pie', figWBS连续预估2月未填写分布())
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                                dbc.Col([
-                                    dbc.Row([
-                                        html.P('连续两月预估无实际填写WBS个数：' + str(
-                                            len(est_twice_wbs())),
-                                               style={"fontSize": 25}),
-                                    ]),
-                                    dbc.Row([
-                                        dbc.Col([
-                                            dash_table_not_collapse('连续两月预估无实际填写WBS-table',est_twice_wbs()[['项目编号','项目名称','PM姓名','上月预估','本月预估']])
-                                        ]),
-                                    ]),
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                            ]),
-                            dbc.Row([
-                                dbc.Col([
-                                    irdc_graph('超过1年WBS-pie', figWBS超过1年分布())
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                                dbc.Col([
-                                    dbc.Row([
-                                        html.P('建立超过1年WBS个数：' + str(
-                                            len(get_more_than1yr_wbs())),
-                                               style={"fontSize": 25}),
-                                    ]),
-                                    dbc.Row([
-                                        dbc.Col([
-                                            dash_table_not_collapse('超过1年WBS-table', get_more_than1yr_wbs())
-                                        ]),
-                                    ]),
-                                ], xs=12, sm=12, md=6, lg=6, xl=6),
-                            ]),
-
-                            dbc.Row([
-                                html.P('较上月新增WBS个数：' + str(
-                                    len(新增wbs(readData(本月WBS维度()), readData(上月WBS维度())))) , style={"fontSize":25}),
-                            ]),
-                            dbc.Row([
-                                dbc.Col([
-                                    dash_table_not_collapse('wbs新增table',
-                                                            新增wbs_tb(readData(本月WBS维度()), readData(上月WBS维度()),
-                                                                       "项目编号", "实际人天")),
-                                ]),
-                            ]),
-                            html.Br(),
-                            dbc.Row([
-                                html.P('较上月减少WBS个数：' + str(
-                                    len(减少wbs(readData(本月WBS维度()), readData(上月WBS维度())))) , style={"fontSize":25}),
-                            ]),
-                            dbc.Row([
-                                dbc.Col([
-                                    dash_table_not_collapse('wbs减少table',
-                                                            新增wbs_tb(readData(上月WBS维度()), readData(本月WBS维度()),
-                                                                       "项目编号", "实际人天")),
-                                ]),
-                            ]),
-                        ],
-                            title='WBS维度详细'
-                        )
-                    ],
-                    flush=True, start_collapsed=True,
-                ),
-            ),
-
-            # dbc.Row([
-            #     dbc.Col([
-            #         dcc.Dropdown(list(员工所属部门汇总1[部门']), list(员工所属部门汇总1['员工所属部门']),
-            #                      multi=True,
-            #                      placeholder="请选择员工所属部门"),
-            #         html.Br(),
-            #
-            #         dcc.RangeSlider(0, 30, value=[10, 15], tooltip={"placement": "bottom", "always_visible": True},
-            #                         allowCross=False)
-            #     ])
-            # ])
-
-        ], fluid=True)
-
-    elif tab == '资源':
+    if tab == '资源':
         return dbc.Container([
             html.P("GPU使用情况"),
             dbc.Row([
