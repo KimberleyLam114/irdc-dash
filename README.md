@@ -14,5 +14,4 @@ Please note that this is a free mode on herokuapp, only 500M Slug size for the w
 Deploy new change:
 $ git add .
 $ git commit -am "make it better"
-$ git push heroku master# irdc
-
+$ git push heroku master
